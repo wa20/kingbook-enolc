@@ -13,15 +13,12 @@ import {
   PhoneIcon,
   PlayCircleIcon,
 } from "@heroicons/react/24/solid";
-import {
-  Popover,
-  PopoverButton,
-  PopoverGroup,
-  PopoverPanel,
-  Dialog,
-  Disclosure,
-  Transition,
-} from "@headlessui/react";
+import { Popover, Transition } from '@headlessui/react'
+// import {
+//     Popover,
+//     PopoverContent,
+//     PopoverTrigger,
+//   } from '@/components/ui/popover'
 // import { Popover } from "@/components/ui/popover";
 
 const products = [
@@ -89,15 +86,15 @@ function Header() {
         </div>
     
     
-        <PopoverGroup className="hidden lg-flex lg:gap-x-12">
+        <div className="hidden lg-flex lg:gap-x-12">
           <Popover className="relative">
-            <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-white">
+            <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-white">
               Stays
               <ChevronDownIcon
                 className="h-5 w-5 flex-none text-white"
                 aria-hidden="true"
               />
-            </PopoverButton>
+            </Popover.Button>
             <Transition
               as={Fragment}
               enter="transition ease-out duration-200"
@@ -107,7 +104,7 @@ function Header() {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <PopoverPanel className="absolute bg-white -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl shadow-lg ring-1 ring-gray-900/5">
+              <Popover.Panel className="absolute bg-white -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl shadow-lg ring-1 ring-gray-900/5">
                 <div className="p-4">
                   {products.map((item) => (
                     <div
@@ -124,10 +121,10 @@ function Header() {
                     </div>
                   ))}
                 </div> 
-              </PopoverPanel>
+              </Popover.Panel>
             </Transition>
           </Popover>
-        </PopoverGroup>
+        </div>
       </nav>
     </header>
   );
