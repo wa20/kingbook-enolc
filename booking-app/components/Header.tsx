@@ -14,6 +14,7 @@ import {
   PlayCircleIcon,
 } from "@heroicons/react/24/solid";
 import { Popover, Transition, Dialog } from "@headlessui/react";
+import DialogSection from "./DialogSection";
 
 const products = [
   {
@@ -82,13 +83,11 @@ function Header() {
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-white">
-              <span>
-                Stays
-                <ChevronDownIcon
-                  className="h-5 w-5 flex-none text-white"
-                  aria-hidden="true"
-                />
-              </span>
+              <span>Stays</span>
+              <ChevronDownIcon
+                className="h-5 w-5 flex-none text-white"
+                aria-hidden="true"
+              />
             </Popover.Button>
             <Transition
               as={Fragment}
@@ -145,21 +144,28 @@ function Header() {
               </Popover.Panel>
             </Transition>
           </Popover>
-          <a href='#' className="text-sm font-semibold leading-6 text-white">Flights</a>
-          <a href='#' className="text-sm font-semibold leading-6 text-white">Car Rentals</a>
-          <a href='#' className="text-sm font-semibold leading-6 text-white">Attaractions</a>
-          <a href='#' className="text-sm font-semibold leading-6 text-white">Flight + Hotel</a>
-        </Popover.Group>
-        
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-
           <a href="#" className="text-sm font-semibold leading-6 text-white">
-            Log in 
-            <span aria-hidden='true'>&arr;</span>
+            Flights
+          </a>
+          <a href="#" className="text-sm font-semibold leading-6 text-white">
+            Car Rentals
+          </a>
+          <a href="#" className="text-sm font-semibold leading-6 text-white">
+            Attaractions
+          </a>
+          <a href="#" className="text-sm font-semibold leading-6 text-white">
+            Flight + Hotel
+          </a>
+        </Popover.Group>
+
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a href="#" className="text-sm font-semibold leading-6 text-white">
+            Log in
+            <span aria-hidden="true">&arr;</span>
           </a>
         </div>
-
       </nav>
+       <DialogSection />
     </header>
   );
 }
