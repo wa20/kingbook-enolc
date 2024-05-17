@@ -9,8 +9,8 @@ import { cn } from "../lib/utils";
 type DialogSectionProps = {
   mobileMenuOpen: boolean;
   setMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  products: Product[];
-  callsToAction: CallToAction[];
+  products: any;
+  callsToAction: any;
 };
 
 const DialogSection: React.FC<DialogSectionProps> = ({
@@ -66,20 +66,52 @@ const DialogSection: React.FC<DialogSectionProps> = ({
                       />
                     </Disclosure.Button>
                     <Disclosure.Panel>
-                      {[...products, ...callsToAction].map(item => (
+                      {[...products, ...callsToAction].map((item) => (
                         <Disclosure.Button
                           key={item.name}
-                          as='a'
+                          as="a"
                           href={item.href}
                           className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-white hover:bg-blue-800"
-                        >  
+                        >
                           {item.name}
                         </Disclosure.Button>
                       ))}
                     </Disclosure.Panel>
-                  </> 
+                  </>
                 )}
               </Disclosure>
+              <a
+                href="#"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-blue-800"
+              >
+                Flights
+              </a>
+              <a
+                href="#"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-blue-800"
+              >
+                Car Rentals
+              </a>
+              <a
+                href="#"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-blue-800"
+              >
+                Attaractions
+              </a>
+              <a
+                href="#"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-blue-800"
+              >
+                Flight + Hotel
+              </a>
+            </div>
+            <div className="py-6">
+              <a
+                href="#"
+                className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-blue-800"
+              >
+                Log In
+              </a>
             </div>
           </div>
         </div>
