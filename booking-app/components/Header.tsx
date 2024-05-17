@@ -11,12 +11,24 @@ import {
   PaperAirplaneIcon,
   PhoneIcon,
   PlayCircleIcon,
-  XMarkIcon
 } from "@heroicons/react/24/solid";
 import { Popover, Transition, Dialog } from "@headlessui/react";
 import DialogSection from "./DialogSection";
 
-const products = [
+type Product = {
+  name: string;
+  description: string;
+  href: string;
+   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+};
+
+type CallToAction = {
+  name: string;
+  href: string;
+   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+};
+
+const products: Product[] = [
   {
     name: "Book a Stay",
     description: "Get a better understanding of your traffic",
@@ -37,7 +49,7 @@ const products = [
   },
 ];
 
-const callsToAction = [
+const callsToAction: CallToAction[] = [
   {
     name: "See Demo Booking",
     href: "#",
@@ -51,7 +63,7 @@ const callsToAction = [
 ];
 
 function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(true)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className="bg-[#013B94] shadow-lg">
@@ -73,7 +85,7 @@ function Header() {
           <button
             type="button"
             className="-m2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
-            onClick={() => setMobileMenuOpen(true)} 
+            onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open Main Menu</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
@@ -165,41 +177,13 @@ function Header() {
           </a>
         </div>
       </nav>
-       {/* <DialogSection /> */}
-
-       <Dialog
-        as="div"
-        className="lg:hidden"
-        open={mobileMenuOpen}
-        onClose={() => setMobileMenuOpen(false)}
-      >
-
-        <div className="fixed inset-0 z-10"/>
-        {/* <Dialog.Overlay className="fixed inset-0 z-40 bg-black opacity-30" /> */}
-
-         <Dialog.Panel className="fixed inset-y-o right-0 z-10 w-full overflow-y-auto bg-[#013B94] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-            <a href='#' className="-m-1.5 p-1.5">
-                <span className="sr-only">Booking.com</span>
-            <img
-              className="h-12 w-auto"
-              src="https://static1.squarespace.com/static/5bde0f00c3c16aa95581e2e2/62b4cb1add9d257dd43bb03d/62b653fedc7c895918d19b24/1656116254983/booking+logo+white.png?format=1500w"
-              alt="booking logo"
-            />
-            </a>
-            <button
-             type="button"
-             className="-m-2 rounded-md p-2.5 text-white"
-             onClick={() => setMobileMenuOpen(false)}
-            >
-            <span className="sr-only">Close menu</span>
-            <XMarkIcon className="h-6 w-6" />
-
-            </button>
-            
-         </Dialog.Panel>    
-     
-
-      </Dialog>         
+      <DialogSection 
+      mobileMenuOpen={mobileMenuOpen} 
+      setMobileMenuOpen={setMobileMenuOpen}
+      products={products}
+      callsToAction={callsToAction}
+      
+      />
     </header>
   );
 }
