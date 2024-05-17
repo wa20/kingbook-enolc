@@ -19,13 +19,13 @@ type Product = {
   name: string;
   description: string;
   href: string;
-   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  icon: any;
 };
 
 type CallToAction = {
   name: string;
   href: string;
-   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  icon: any;
 };
 
 const products: Product[] = [
