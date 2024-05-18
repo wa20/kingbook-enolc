@@ -25,7 +25,7 @@ import { Calendar } from "./ui/calendar";
 export const formSchema = z.object({
   location: z.string().min(2, "Must be 2 characters or more").max(50),
   dates: z.object({
-    from: z.date(),
+    from: z.date({}),
     to: z.date(),
   }),
   adults: z
@@ -143,7 +143,63 @@ const SearchForm = () => {
                   </Popover>
                 </FormItem>
               )}
-            ></FormField>
+            />
+          </div>
+          <div className="flex w-full items-center space-x-2">
+            <div className="grid items-center flex-1">
+              <FormField
+                control={form.control}
+                name="adults"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col">
+                    <FormLabel className="text-white">Adults</FormLabel>
+                    <FormMessage />
+                    <FormControl>
+                      <Input type="number" placeholder="Adults" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="grid items-center flex-1">
+              <FormField
+                control={form.control}
+                name="children"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col">
+                    <FormLabel className="text-white">Children</FormLabel>
+                    <FormMessage />
+                    <FormControl>
+                      <Input type="number" placeholder="Adults" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="grid items-center flex-1">
+              <FormField
+                control={form.control}
+                name="rooms"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col">
+                    <FormLabel className="text-white">Rooms</FormLabel>
+                    <FormMessage /> 
+                    <FormControl>
+                      <Input type="number" placeholder="Rooms" {...field} />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="mt-auto">
+              <Button
+                type="submit"
+                className="bg-blue-500 text-base"
+              >
+                Search
+              </Button>
+
+            </div>
           </div>
         </form>
       </Form>
